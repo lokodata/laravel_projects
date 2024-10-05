@@ -22,7 +22,7 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: colors.orange
+                primary: colors.lime,
             },
         },
     },
