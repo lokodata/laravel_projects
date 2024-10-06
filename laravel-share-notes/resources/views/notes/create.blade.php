@@ -7,10 +7,8 @@
 
 
     <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="p-6 text-gray-900 dark:text-gray-100">
-                Create a note!
-            </div>
+        <div class="max-w-2xl mx-auto text-gray-900 sm:px-6 lg:px-8 dark:text-gray-100">
+            <livewire:notes.create-note />
         </div>
     </div>
 </x-app-layout>

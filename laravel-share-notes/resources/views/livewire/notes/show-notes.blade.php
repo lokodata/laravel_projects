@@ -23,13 +23,22 @@ new class extends Component {
                 <p class="text-sm">Let's create your frist note to send.</p>
                 <x-button primary icon-right="plus" class="mt-6" href="{{ route('notes.create') }}" wire:navigate>Create note</x-button>
             </div>
+
         @else
+            <x-button primary icon-right="plus" class="mb-4" href="{{ route('notes.create') }}" wire:navigate>Create note</x-button>
+
             <div class="grid grid-cols-2 gap-4 mt-12">
                 @foreach ($notes as $note)
                 <x-card wire:key='{{ $note->id }}'>
-                    <div class="flex items-center justify-between">
-                        <a href="#" class="text-xl font-bold hover:underline hover:text-blue-500">{{$note->title}}</a>
 
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <a href="#" class="text-xl font-bold hover:underline hover:text-lime-500">{{$note->title}}</a>
+
+                            <p class="mt-1 text-xs">
+                                {{ Str::limit($note->body, 70) }}
+                            </p>
+                        </div>
                         <div class="text-xs text-gray-500">{{ \Carbon\Carbon::parse($note->send_date)->format('M-d-Y') }} </div>
                     </div>
 
@@ -40,6 +49,7 @@ new class extends Component {
                             <x-button rounded icon="trash" flat secondary interaction="negative"></x-button>
                         </div>
                     </div>
+
                 </x-card>
                 @endforeach
             </div>
