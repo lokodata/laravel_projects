@@ -43,7 +43,8 @@ new #[Layout('layouts.app')] class extends Component {
             'is_published' => $this->noteIsPublished,
         ]);
 
-        redirect(route('notes.index'));
+        $this->dispatch('note-saved');
+
     }
 
 }; ?>
@@ -58,6 +59,8 @@ new #[Layout('layouts.app')] class extends Component {
 
 <div class="py-12">
     <div class="max-w-2xl mx-auto text-gray-900 sm:px-6 lg:px-8 dark:text-gray-100">
+
+        <x-action-message on="note-saved" redirectUrl="{{ route('notes.index') }}" class="px-4 py-2 mb-4 text-sm font-bold text-white bg-green-500">Note updated successfully</x-action-message>
 
         <form wire:submit="saveNote" class="space-y-4">
             <x-input wire:model='noteTitle' label='Note Title' placeholder="Important! Great Day Ahead"></x-input>

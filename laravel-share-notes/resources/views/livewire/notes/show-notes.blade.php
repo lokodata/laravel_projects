@@ -9,7 +9,7 @@ new class extends Component {
     {
         $note = Note::where('id', $noteId)->first();
         // $note = Auth::user()->notes()->where('id', $noteId)->first();
-        $this->Auth::routes('delete', $note);
+        $this->authorize('delete', $note);
         $note->delete();
     }
 
