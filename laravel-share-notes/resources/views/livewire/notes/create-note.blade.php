@@ -22,7 +22,7 @@ new class extends Component {
             'body' => $this->noteBody,
             'recipient' => $this->noteRecipient,
             'send_date' => $this->noteSendDate,
-            'is_published' => false,
+            'is_published' => true,
         ]);
 
         redirect(route('notes.index'));
@@ -32,17 +32,17 @@ new class extends Component {
 
 <div>
     <div class="flex justify-end mb-2">
-        <x-button icon="arrow-left" secondary href="{{ route('notes.index') }}">All Notes</x-button>
+        <x-button icon="arrow-left" secondary flat href="{{ route('notes.index') }}">All Notes</x-button>
     </div>
 
-    <form wire:submimt="submit" class="space-y-4">
+    <form wire:submit="submit" class="space-y-4">
         <x-input wire:model='noteTitle' label='Note Title' placeholder="Important! Great Day Ahead"></x-input>
         <x-textarea wire:model='noteBody' label='Your Note' placeholder="News has come that a great day is coming!"></x-textarea>
         <x-input icon="user" wire:model='noteRecipient' type="email" label="Recipient" placeholder="yourfriend@email.com"></x-input>
         <x-input icon="calendar" wire:model='noteSendDate' type="date" label="Send Date"></x-input>
 
         <div class="pt-4 ">
-            <x-button wire:click='submit' primary right-icon="calendar" spinner>Schedule Note</x-button>
+            <x-button type='submit' primary right-icon="calendar" spinner>Schedule Note</x-button>
         </div>
     </form>
 </div>
